@@ -1,0 +1,7 @@
+# Установка k3s worker нод
+# Запускается ПОСЛЕ k3s_master.yml — нужен join token с мастера
+---
+- name: Setup k3s workers
+  hosts: k3s_workers
+  roles:
+    - k3s_worker

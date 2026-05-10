@@ -1,0 +1,6 @@
+# Установка cert-manager + ClusterIssuer для Let's Encrypt
+---
+- name: Setup cert-manager
+  hosts: k3s_master
+  roles:
+    - cert_manager

@@ -1,0 +1,6 @@
+# Базовая настройка всех серверов
+---
+- name: Common setup
+  hosts: all
+  roles:
+    - common

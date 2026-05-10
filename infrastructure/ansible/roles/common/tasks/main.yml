@@ -1,0 +1,33 @@
+---
+- name: Обновить apt кэш
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Установить базовые пакеты
+  apt:
+    name:
+      - curl
+      - wget
+      - git
+      - htop
+      - fail2ban
+      - unattended-upgrades
+    state: present
+
+- name: Настроить timezone
+  timezone:
+    name: Europe/Moscow
+
+- name: Включить автоматические обновления безопасности
+  copy:
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    content: |
+      APT::Periodic::Update-Package-Lists "1";
+      APT::Periodic::Unattended-Upgrade "1";
+
+- name: Запустить fail2ban
+  service:
+    name: fail2ban
+    state: started
+    enabled: yes

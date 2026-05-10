@@ -1,0 +1,35 @@
+# SSH ключи проекта — НИКОГДА не коммить!
+.ssh/
+
+# Vault пароль
+.vault_pass
+
+# Terraform
+*.tfvars
+!*.tfvars.example
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# Ansible secrets (vault.yml коммитится в зашифрованном виде)
+# НЕ добавляй vault.yml сюда — он должен быть в git, но зашифрованным
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+
+# Docker
+docker_compose/.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/

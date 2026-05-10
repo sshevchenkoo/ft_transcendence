@@ -1,0 +1,6 @@
+# Установка k3s master ноды
+---
+- name: Setup k3s master
+  hosts: k3s_master
+  roles:
+    - k3s_master

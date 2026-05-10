@@ -1,0 +1,7 @@
+---
+# FIX: добавлен become: yes — нужен для переключения на пользователя postgres
+- name: Setup PostgreSQL
+  hosts: postgres
+  become: yes
+  roles:
+    - postgres

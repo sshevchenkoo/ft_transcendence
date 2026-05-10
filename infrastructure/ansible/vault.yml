@@ -1,0 +1,15 @@
+# Этот файл шифруется командой:
+#   ansible-vault encrypt vault.yml
+#
+# Редактировать:
+#   ansible-vault edit vault.yml
+#
+# Запуск playbook с vault:
+#   ansible-playbook site.yml --ask-vault-pass
+#   ansible-playbook site.yml --vault-password-file ~/.vault_pass
+
+vault_postgres_password:  "сюда-сильный-пароль"
+vault_hcloud_token:       "сюда-hetzner-токен"
+vault_django_secret_key:  "сюда-django-secret-key"
+vault_domain:             "yourdomain.com"
+vault_letsencrypt_email:  "your@email.com"

@@ -1,0 +1,9 @@
+# Главный плейбук — запускает всё по порядку
+# Запуск: ansible-playbook site.yml --ask-vault-pass
+---
+- import_playbook: playbooks/common.yml
+- import_playbook: playbooks/postgres.yml
+- import_playbook: playbooks/k3s_master.yml
+- import_playbook: playbooks/k3s_workers.yml
+- import_playbook: playbooks/nginx_ingress.yml
+- import_playbook: playbooks/cert_manager.yml

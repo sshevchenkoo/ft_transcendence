@@ -1,0 +1,27 @@
+# Ansible dynamic inventory — Hetzner Cloud плагин
+#
+# Установка плагина (один раз):
+#   ansible-galaxy collection install hetzner.hcloud
+#
+# Токен берётся из переменной окружения HCLOUD_TOKEN
+# Makefile экспортирует его автоматически из terraform.tfvars
+
+plugin: hetzner.hcloud.hcloud
+
+# FIX: явно берём токен из env — без этого inventory будет пустым
+token: "{{ lookup('env', 'HCLOUD_TOKEN') }}"
+
+# Берём только серверы нашего проекта.
+# ВАЖНО: значение "transcendence" должно совпадать с project_name в terraform/variables.tf.
+# hcloud-плагин не поддерживает Jinja2 в label_selector — менять вручную при смене проекта.
+label_selector: "project=transcendence"
+
+# Подключаемся по публичному IP
+compose:
+  ansible_host: public_ipv4
+
+# Группируем по лейблу role (выставляется Terraform'ом)
+groups:
+  k3s_master:  "'master'   in labels.role"
+  k3s_workers: "'worker'   in labels.role"
+  postgres:    "'postgres' in labels.role"
